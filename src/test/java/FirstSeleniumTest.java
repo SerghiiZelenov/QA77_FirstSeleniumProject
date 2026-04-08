@@ -7,25 +7,29 @@ import org.testng.annotations.Test;
 
 public class FirstSeleniumTest {
     WebDriver driver;
-    // before -> setUP
+
+    // before -> setUp
     @BeforeMethod
-    public void setUP() {
+    public void setUp() {
         WebDriverManager.chromedriver().browserVersion("146").setup();
         driver = new ChromeDriver();
-        driver.get("https://www.google.com/"); // without history
-        // driver.navigate().to("https://www.google.com/"));  -> with history
-        // driver.navigate().back();
-        // driver.navigate().forward();
-        // driver.navigate().refresh();
+        driver.get("https://www.google.com/"); // open browser without history
+        //driver.navigate().to("https://www.google.com/"); // initialisation with history
+//        driver.navigate().back();
+//        driver.navigate().forward();
+//        driver.navigate().refresh();
     }
-    // test
+
+    //test
     @Test
-    public void openGoogle() {
+    public void openGoogle(){
         System.out.println("Hello");
     }
-    // after -> tearDOWN
+
+    //after -> tearDown
     @AfterMethod
-    public void tearDown() {
-        driver.quit();
+    public void tearDown(){
+        driver.quit(); // close whole browser
+        // driver.close(); // - close last tab in browser
     }
 }
