@@ -61,5 +61,40 @@ public class FindElementlnTable {
         //get all of rows
         List<WebElement> rows = driver.findElements(By.cssSelector("tr"));
         System.out.println(rows.size());
+
+        for (int i = 0; i < rows.size(); i++) {
+            System.out.println(rows.get(i).getText());
+        }
+        for (WebElement element: rows) {
+            System.out.println(element.getText());
+        }
+
+        //get row 2
+        WebElement germany = driver.findElement(By.cssSelector("#customers tr:nth-child(2)"));
+        System.out.println(germany.getText());
+        System.out.println("*******************");
+
+        //get row 2,2 element
+        WebElement maria = driver.findElement(By.cssSelector("#customers tr:nth-child(2) td:nth-child(2)"));
+        System.out.println(maria.getText());
+        System.out.println("*************************");
+
+        //get row 4, last child
+        WebElement last = driver.findElement(By.cssSelector("#customers tr:nth-child(4) td:last-child"));
+        System.out.println(last.getText());
+
+    }
+    @Test
+    public void findElementXpathInTable() {
+        List<WebElement> rows = driver.findElements(By.xpath("//tr"));
+
+        WebElement germany = driver.findElement(By.xpath("//*[@id='customers']//tr[2]"));
+        System.out.println(germany.getText());
+
+        WebElement maria = driver.findElement(By.xpath("//*[@id='customers']//tr[2]//td[2]"));
+        System.out.println(maria.getText());
+
+        WebElement last = driver.findElement(By.xpath("//*[@id ='customers']//tr[6]//td[last()]"));
+        System.out.println(last.getText());
     }
 }
