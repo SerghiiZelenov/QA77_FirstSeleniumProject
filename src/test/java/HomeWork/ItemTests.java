@@ -1,6 +1,5 @@
-package HomeWork06;
+package HomeWork;
 
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -12,6 +11,11 @@ public class ItemTests extends TestBase {
     public void precondition() {
         email = app.getUser().registerNewUser();
         app.getItem().goToHomePage();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Test
@@ -24,6 +28,13 @@ public class ItemTests extends TestBase {
             throw new RuntimeException(e);
         }
         app.getItem().openCart();
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
         Assert.assertTrue(app.getItem().isProductInCart(productName));
     }
 }

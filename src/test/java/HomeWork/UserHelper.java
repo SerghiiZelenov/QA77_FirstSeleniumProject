@@ -1,4 +1,4 @@
-package HomeWork06;
+package HomeWork;
 
 import org.openqa.selenium.By;
 
@@ -14,6 +14,13 @@ public class UserHelper extends BaseHelper {
 
     public String registerNewUser() {
         clickOnRegisterLink();
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
         type(By.id("FirstName"), "Ivan");
         type(By.id("LastName"), "Ivanov");
 
@@ -24,6 +31,16 @@ public class UserHelper extends BaseHelper {
         type(By.id("ConfirmPassword"), "123456");
 
         click(By.id("register-button"));
+
+        try {
+
+            Thread.sleep(2000);
+
+        } catch (InterruptedException e) {
+
+            throw new RuntimeException(e);
+
+        }
         return email;
     }
 }

@@ -1,4 +1,4 @@
-package HomeWork06;
+package HomeWork;
 
 import org.openqa.selenium.By;
 
