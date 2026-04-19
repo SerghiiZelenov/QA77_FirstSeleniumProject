@@ -10,49 +10,17 @@ import java.time.Duration;
 
 public class TestBase {
 
-    WebDriver driver;
+    ApplicationManager app = new ApplicationManager();
+
 
     @BeforeMethod
     public void setUp() {
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get("https://demowebshop.tricentis.com/");
-    }
-
-    public boolean isElementPresent(By locator) {
-        return driver.findElements(locator).size() > 0;
-    }
-
-    public void click(By locator) {
-        driver.findElement(locator).click();
-    }
-
-    public void type(By locator, String text) {
-        driver.findElement(locator).clear();
-        driver.findElement(locator).sendKeys(text);
+        app.init();
     }
 
     @AfterMethod
     public void tearDown() {
-        driver.quit();
+        app.stop();
     }
 
-    public void clickOnRegisterLink() {
-        click(By.cssSelector(".ico-register"));
-    }
-
-    public String registerNewUser() {
-        clickOnRegisterLink();
-        type(By.id("FirstName"), "Ivan");
-        type(By.id("LastName"), "Ivanov");
-
-        String email = "test" + System.currentTimeMillis() + "@mail.com";
-        type(By.id("Email"), email);
-
-        type(By.id("Password"), "123456");
-        type(By.id("ConfirmPassword"), "123456");
-
-        click(By.id("register-button"));
-        return email;
-    }
 }

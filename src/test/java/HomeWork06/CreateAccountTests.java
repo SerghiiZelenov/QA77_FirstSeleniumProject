@@ -9,13 +9,9 @@ public class CreateAccountTests extends TestBase {
     @Test
     public void createAccountPositiveTest() {
 
-        clickOnRegisterLink();
+        app.getUser().registerNewUser();
 
-        registerNewUser();
-
-        Assert.assertTrue(isElementPresent(By.cssSelector(".ico-logout")));
-        System.out.println("Registration completed");
-        System.out.println("Logout present: " + isElementPresent(By.cssSelector(".ico-logout")));
+        Assert.assertTrue(app.getUser().isElementPresent(By.cssSelector(".ico-logout")));
     }
 
 }
