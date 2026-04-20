@@ -19,3 +19,18 @@ dependencies {
 test {
     useTestNG()
 }
+
+def registerTask(String taskName, String suitePath) {
+    tasks.register(taskName, Test) {
+        useTestNG() {
+            suites suitePath
+        }
+        testClassesDirs = sourceSets.test.output.classesDirs
+        classpath = sourceSets.test.runtimeClasspath
+        if (project.hasProperty("browser")) {
+            systemProperty 'browser', "${browser}"
+        }
+    }
+}
+
+registerTask('allTests', 'src/test/resources/allTests.xml')

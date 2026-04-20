@@ -5,7 +5,7 @@ import org.testng.annotations.BeforeMethod;
 
 public class TestBase {
 
-    ApplicationManager app = new ApplicationManager("safari");
+    ApplicationManager app = new ApplicationManager("chrome");
 
     @BeforeMethod
     public void setUp() {
